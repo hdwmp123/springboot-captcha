@@ -10,9 +10,11 @@ import java.lang.reflect.Method;
  */
 public class TestUtils {
 
-    public static void expectExceptionThrown(ExpectedException thrown,
-                                             Class<? extends Exception> expectedType,
-                                             String expectedMessage) {
+    public static void expectExceptionThrown(
+            ExpectedException thrown,
+            Class<? extends Exception> expectedType,
+            String expectedMessage
+    ) {
         thrown.expect(expectedType);
         thrown.expectMessage(expectedMessage);
     }
@@ -48,10 +50,12 @@ public class TestUtils {
         }
     }
 
-    public static Object invokePrivateMethod(Object object,
-                                             String methodName,
-                                             Class<?>[] parameterTypes,
-                                             Object[] args) {
+    public static Object invokePrivateMethod(
+            Object object,
+            String methodName,
+            Class<?>[] parameterTypes,
+            Object[] args
+    ) {
         try {
             Method method = object.getClass().getDeclaredMethod(methodName, parameterTypes);
             boolean originalAccessState = method.isAccessible();
@@ -66,8 +70,10 @@ public class TestUtils {
         }
     }
 
-    public static Object invokePrivateMethod(Object object,
-                                             String methodName) {
+    public static Object invokePrivateMethod(
+            Object object,
+            String methodName
+    ) {
         return invokePrivateMethod(object, methodName, new Class[0], new Object[0]);
     }
 

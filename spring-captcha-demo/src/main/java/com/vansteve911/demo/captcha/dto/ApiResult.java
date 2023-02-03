@@ -5,7 +5,7 @@ import com.vansteve911.demo.captcha.exception.ErrorCode;
 /**
  * Created by vansteve911 on 2018/3/30.
  */
-public class ApiResult <T> {
+public class ApiResult<T> {
 
     private int code;
     private String msg;

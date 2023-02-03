@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by vansteve911
  */
-public class LocalCacheProvider <T> extends AbstractCacheProvider<String, T> {
+public class LocalCacheProvider<T> extends AbstractCacheProvider<String, T> {
 
     private static final int MAX_CACHE_SIZE = 5000;
 

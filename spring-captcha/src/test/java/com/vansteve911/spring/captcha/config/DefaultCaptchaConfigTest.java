@@ -45,8 +45,8 @@ public class DefaultCaptchaConfigTest {
     public void loadExceptionMsg() {
         DefaultCaptchaConfig.loadExceptionMsg("sample_exception_msg.json");
         assertTrue(checkTypeMsg(GENERATE_FAILED, "验证码生成失败") &&
-                checkTypeMsg(GENERATE_TOO_FREQUENTLY, "请勿频繁请求验证码") &&
-                checkTypeMsg(SEND_FAILED, "验证码发送失败, 请稍后再试"));
+                           checkTypeMsg(GENERATE_TOO_FREQUENTLY, "请勿频繁请求验证码") &&
+                           checkTypeMsg(SEND_FAILED, "验证码发送失败, 请稍后再试"));
     }
 
     private boolean checkTypeMsg(CaptchaException.Type type, String msg) {

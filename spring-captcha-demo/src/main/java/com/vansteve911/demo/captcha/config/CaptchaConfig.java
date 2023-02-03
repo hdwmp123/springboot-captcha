@@ -35,9 +35,13 @@ public class CaptchaConfig extends DefaultCaptchaConfig {
     @Bean
     public FactoryRegistry<CaptchaType, CacheProvider<String, CaptchaCode>> cacheProviderFactory() {
         return new DefaultFactoryRegistry<CaptchaType, CacheProvider<String, CaptchaCode>>()
-                .registerFactory(CaptchaType.MOBILE,
-                        new RedisCacheProvider<>(mobileCaptchaProperties.getExpireSeconds(), redisTemplate))
-                .registerFactory(CaptchaType.IMG, new LocalCacheProvider<>(imgCaptchaProperties.getExpireSeconds(),
-                        imgCaptchaProperties.getMaxCacheSize()));
+                .registerFactory(
+                        CaptchaType.MOBILE,
+                        new RedisCacheProvider<>(mobileCaptchaProperties.getExpireSeconds(), redisTemplate)
+                )
+                .registerFactory(CaptchaType.IMG, new LocalCacheProvider<>(
+                        imgCaptchaProperties.getExpireSeconds(),
+                        imgCaptchaProperties.getMaxCacheSize()
+                ));
     }
 }

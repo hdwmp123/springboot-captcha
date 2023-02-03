@@ -160,7 +160,8 @@ public class MobileCaptchaCodeGenerator extends AbstractCaptchaCodeGenerator {
 
     private static String sendResponse2Str(SendSmsResponse response) {
         return response == null ? null : String.format("code=%s, message=%s, requestId=%s, bizId=%s",
-                response.getCode(), response.getMessage(), response.getRequestId(), response.getBizId());
+                                                       response.getCode(), response.getMessage(), response.getRequestId(), response.getBizId()
+        );
     }
 
     private SendSmsResponse sendSms(String mobile, String signName, String templateCode, String content, String upExtendCode, String outId) throws ClientException {

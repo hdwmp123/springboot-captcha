@@ -43,7 +43,8 @@ public class JsonUtils {
 
     public static <K, V> Map<K, V> fromJsonToTypedMap(String json, Class<K> keyClass, Class<V> valueClass) {
         try {
-            TypeReference<Map<K, V>> typeRef = new TypeReference<Map<K, V>>() {};
+            TypeReference<Map<K, V>> typeRef = new TypeReference<Map<K, V>>() {
+            };
             return jsonMapper.readValue(json, typeRef);
         } catch (IOException e) {
             logger.error("fromJsonToMap", e);

@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public class CaptchaException extends RuntimeException {
 
     private static EnumMap<Type, String> msgTypes = new EnumMap<Type, String>(Stream.of(Type.values())
-            .collect(Collectors.toMap(e -> e, Type::name)));
+                                                                                      .collect(Collectors.toMap(e -> e, Type::name)));
 
     public enum Type {
         GENERATE_FAILED,

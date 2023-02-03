@@ -28,10 +28,12 @@ public class LoginController {
     private CaptchaService captchaService;
 
     @RequestMapping(value = "/loginByCaptcha", method = RequestMethod.POST)
-    public ApiResult loginByCaptcha(@RequestParam String mobile,
-                                    @RequestParam String mobileCaptcha,
-                                    @RequestParam String imgCaptcha,
-                                    HttpSession httpSession) {
+    public ApiResult loginByCaptcha(
+            @RequestParam String mobile,
+            @RequestParam String mobileCaptcha,
+            @RequestParam String imgCaptcha,
+            HttpSession httpSession
+    ) {
         validateCaptcha(httpSession.getId(), imgCaptcha, CaptchaType.IMG);
         validateCaptcha(mobile, mobileCaptcha, CaptchaType.MOBILE);
         return new ApiResult(ErrorCode.SUCCESS);
@@ -49,7 +51,7 @@ public class LoginController {
 
     @RequestMapping(value = "/mobileCaptcha", method = RequestMethod.GET)
     public ApiResult genMobileCaptcha(@RequestParam String mobile) {
-        if(captchaService.genCaptchaCode(mobile, CaptchaType.MOBILE) != null) {
+        if (captchaService.genCaptchaCode(mobile, CaptchaType.MOBILE) != null) {
             return new ApiResult(ErrorCode.SUCCESS);
         }
         return new ApiResult(ErrorCode.FAILED);

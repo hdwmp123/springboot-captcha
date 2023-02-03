@@ -38,8 +38,10 @@ public class DefaultCaptchaConfig {
     public FactoryRegistry<CaptchaType, CacheProvider<String, CaptchaCode>> cacheProviderFactory() {
         return new DefaultFactoryRegistry<CaptchaType, CacheProvider<String, CaptchaCode>>()
                 .registerFactory(CaptchaType.MOBILE, new LocalCacheProvider<>(mobileCaptchaProperties.getExpireSeconds()))
-                .registerFactory(CaptchaType.IMG, new LocalCacheProvider<>(imgCaptchaProperties.getExpireSeconds(),
-                        imgCaptchaProperties.getMaxCacheSize()));
+                .registerFactory(CaptchaType.IMG, new LocalCacheProvider<>(
+                        imgCaptchaProperties.getExpireSeconds(),
+                        imgCaptchaProperties.getMaxCacheSize()
+                ));
     }
 
     @PostConstruct

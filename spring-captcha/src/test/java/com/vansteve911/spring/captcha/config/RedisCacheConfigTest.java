@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static com.vansteve911.spring.captcha.common.TestUtils.getPrivateFieldValue;
 import static org.junit.Assert.*;
+
 @RunWith(SpringRunner.class)
 @Import(RedisCacheConfig.class)
 @ContextConfiguration(classes = TestAppContext.class)
@@ -30,6 +31,6 @@ public class RedisCacheConfigTest extends AbstractJUnit4SpringContextTests {
         assertNotNull(connectionFactory);
         RedisStandaloneConfiguration config = (RedisStandaloneConfiguration) getPrivateFieldValue(connectionFactory, "standaloneConfig");
         assertTrue(config.getHostName().equals("localhost")
-                && config.getPort() == 6379);
+                           && config.getPort() == 6379);
     }
 }

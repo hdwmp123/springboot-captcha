@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by vansteve911
  */
-public class RedisCacheProvider <T> extends AbstractCacheProvider<String, T> {
+public class RedisCacheProvider<T> extends AbstractCacheProvider<String, T> {
 
     private RedisTemplate<String, T> redisTemplate;
 

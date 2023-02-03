@@ -31,7 +31,8 @@ public class ApiExceptionHandler {
             new Handler<>((r, e) -> new ApiResult(FAILED.getCode(), e.getMessage()), CaptchaException.class),
             new Handler<>((r, e) -> new ApiResult(e.getCode(), e.getMsg()), BusinessException.class),
             new Handler<>((r, e) -> new ApiResult(METHOD_NOT_ALLOWED.getCode(), e.getMessage()), HttpRequestMethodNotSupportedException.class),
-            new Handler<>((r, e) -> new ApiResult(ILLEGAL_PARAM.getCode(), e.getMessage()), MissingServletRequestParameterException.class));
+            new Handler<>((r, e) -> new ApiResult(ILLEGAL_PARAM.getCode(), e.getMessage()), MissingServletRequestParameterException.class)
+    );
 
     @ExceptionHandler(Exception.class)
     public @ResponseBody
@@ -40,8 +41,9 @@ public class ApiExceptionHandler {
                 .filter(r -> r != null).findFirst()
                 .orElseGet(() -> {
                     String errLog = String.format("exception occured when invoking %s, params: %s", request.getRequestURI(),
-                            request.getParameterMap().entrySet().stream().map(kv -> String.join("=", kv.getKey(), Arrays.toString(kv.getValue())))
-                                    .collect(Collectors.joining(",")));
+                                                  request.getParameterMap().entrySet().stream().map(kv -> String.join("=", kv.getKey(), Arrays.toString(kv.getValue())))
+                                                          .collect(Collectors.joining(","))
+                    );
                     logger.error(errLog, ex);
                     return new ApiResult<>(INTERNAL_ERROR.getCode(), ex.getMessage());
                 });

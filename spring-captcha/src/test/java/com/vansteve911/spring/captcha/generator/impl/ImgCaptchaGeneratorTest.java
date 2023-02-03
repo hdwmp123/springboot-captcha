@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class ImgCaptchaGeneratorTest {
         String key = "a";
         ImgCaptchaCode code = imgCaptchaGenerator.generateCaptchaCode(key);
         assertTrue(code != null && code.getValue().length() == properties.getCodeLength()
-                && code.getBufferedImage() != null);
+                           && code.getBufferedImage() != null);
     }
 
     @Test
